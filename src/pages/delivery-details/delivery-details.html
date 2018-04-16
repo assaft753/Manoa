@@ -1,0 +1,43 @@
+<ion-header dir="rtl">
+  <ion-navbar color="RoyalPurple">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+        </ion-col>
+        <ion-col>
+          <ion-title>
+            <span style="font-size:25px; font-weight:bold;">תעודות משלוח</span>
+          </ion-title>
+        </ion-col>
+        <ion-col>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-title>
+            <span>{{client.customer_name}}</span>
+          </ion-title>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding dir="rtl">
+  <div *ngFor="let delivery of deliveries">
+    <div>
+      <p style="color:#6A5acd; font-size:30px"> תאריך: {{delivery.date}}</p>
+      <p *ngIf="delivery.note!=' '" style="color:#6A5acd; font-size:25px"> הערות: {{delivery.note}}</p>
+      <p style="color:#696969; font-size:15px"> מק"ט: {{delivery.delivery_id}}</p>
+    </div>
+    <ion-card *ngFor="let delivery_detail of delivery.delivery_details">
+      <ion-card-header>
+        <span style="color:#6A5acd; font-size:20px"> {{delivery_detail.product_name}}</span>
+      </ion-card-header>
+      <ion-card-content>
+        <p><span style="color:#6A5acd;font-size:15px;font-weight: bold;"> מחיר: </span><span dir="ltr">{{delivery_detail.product_price}}</span>          ש"ח</p>
+        <p><span style="color:#6A5acd;font-size:15px;font-weight: bold;"> כמות: </span><span dir="ltr">{{delivery_detail.product_amount}}</span></p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

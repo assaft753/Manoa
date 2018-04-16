@@ -1,0 +1,43 @@
+<ion-header dir="ltr">
+  <ion-navbar color="RoyalPurple">
+    <ion-buttons start>
+      <button ion-button icon-only (click)="GoBack()">
+        <ion-icon large name="md-arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title align="center">
+      <span style="font-size:15px; font-weight:bold;">{{product.product_info.product_name}}</span>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding dir="rtl">
+  <form [formGroup]="InputControl">
+    <ion-list>
+
+      <ion-item>
+        <ion-label color="RoyalPurple" floating>כמות:</ion-label>
+        <ion-input (ionChange)="CheckOKbutton()" formControlName="quantity1" type="number"></ion-input>
+      </ion-item>
+
+      <div *ngIf="InputControl.controls.quantity1.dirty && !InputControl.controls.quantity1.valid">
+        <p *ngIf="InputControl.controls.quantity1.errors.required">עליך לבחור כמות</p>
+      </div>
+
+      <ion-item>
+        <ion-label color="RoyalPurple" floating>מחיר ליחידה:</ion-label>
+        <ion-input #MyInput2 (ionChange)="CheckOKbutton()" formControlName="quantity2" type="number"></ion-input>
+      </ion-item>
+
+      <div *ngIf="InputControl.controls.quantity2.dirty && !InputControl.controls.quantity2.valid">
+        <p *ngIf="InputControl.controls.quantity2.errors.min">עליך לרשום מחיר מתאים</p>
+        <p *ngIf="InputControl.controls.quantity2.errors.required">עליך לרשום מחיר</p>
+
+      </div>
+    </ion-list>
+  </form>
+  <div padding align="center">
+    <button ion-button round disabled={{DisableOKButton}} color="RoyalPurple" large (click)="OKButton()"><ion-icon name="md-checkmark"></ion-icon></button>
+  </div>
+</ion-content>

@@ -1,0 +1,83 @@
+<ion-header dir="ltr">
+  <ion-navbar color="RoyalPurple">
+    <ion-buttons start>
+      <button ion-button icon-only (click)="GoBack()">
+        <ion-icon large name="md-arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title align="center">
+      <span style="font-size:15px; font-weight:bold;">הוספת מוצר</span>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <form [formGroup]="InputControl">
+    <ion-list dir="rtl">
+      <ion-item>
+        <ion-label color="RoyalPurple" floating>שם מוצר:</ion-label>
+        <ion-input #name (ionChange)="CheckOKbutton()" formControlName="ProductName"></ion-input>
+      </ion-item>
+      <p *ngIf="InputControl.controls.ProductName.dirty && !InputControl.controls.ProductName.valid">עליך למלא שם מוצר</p>
+      <ion-item>
+        <ion-label color="RoyalPurple" floating>בר-קוד:</ion-label>
+        <ion-input #barcode (ionChange)="CheckOKbutton()" formControlName="Barcode"></ion-input>
+      </ion-item>
+      <div>
+        <p *ngIf="InputControl.controls.Barcode.dirty && !InputControl.controls.Barcode.valid">עליך למלא בר-קוד</p>
+        <p *ngIf="BarcodeOK===false">בר-קוד תפוס</p>
+      </div>
+      <ion-item style="padding-bottom: 13px">
+        <ion-label color="RoyalPurple" floating>הערות:</ion-label>
+        <ion-input #note (ionChange)="CheckOKbutton()"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>לעדכן מלאי</ion-label>
+        <ion-checkbox #updatestock (ionChange)="CheckOKbutton()" color="RoyalPurple" checked="true"></ion-checkbox>
+      </ion-item>
+      <div *ngIf="updatestock.checked">
+        <ion-item>
+          <ion-label color="RoyalPurple" floating>מלאי:</ion-label>
+          <ion-input #amount (ionChange)="CheckOKbutton()" formControlName="amount" type="number"></ion-input>
+        </ion-item>
+        <div *ngIf="InputControl.controls.amount.dirty && !InputControl.controls.amount.valid">
+          <p *ngIf="InputControl.controls.amount.errors.required">עליך לרשום מחיר</p>
+        </div>
+      </div>
+      <ion-item>
+        <ion-label color="RoyalPurple" floating>מחיר מכירה:</ion-label>
+        <ion-input #retail (ionChange)="CheckOKbutton()" type="number" formControlName="retail"></ion-input>
+      </ion-item>
+      <div *ngIf="InputControl.controls.retail.dirty && !InputControl.controls.retail.valid">
+        <p *ngIf="InputControl.controls.retail.errors.min || InputControl.controls.retail.errors.required">עליך לרשום מחיר מתאים</p>
+      </div>
+      <ion-item>
+        <ion-label color="RoyalPurple" floating>מחיר קנייה:</ion-label>
+        <ion-input #cost (ionChange)="CheckOKbutton()" type="number" formControlName="cost"></ion-input>
+      </ion-item>
+      <div *ngIf="InputControl.controls.cost.dirty && !InputControl.controls.cost.valid">
+        <p *ngIf="InputControl.controls.cost.errors.min || InputControl.controls.cost.errors.required">עליך לרשום מחיר מתאים</p>
+      </div>
+      <div>
+        <ion-auto-complete padding #SupplierInput [template]="customized" [dataProvider]="Supplier" (itemSelected)="onSelectedSupplier($event)"
+          [options]="{ placeholder : 'הזן פרטיי ספק' }"></ion-auto-complete>
+
+        <ng-template #customized let-attrs="attrs">
+          <span [innerHTML]="attrs.data.supplier_name|boldprefix:attrs.keyword"></span>
+        </ng-template>
+
+        <ion-auto-complete #CategoryInput padding [template]="customized2" [dataProvider]="Category" (itemSelected)="onSelectedCategory($event)"
+          [options]="{ placeholder : 'הזן קטגוריה' }"></ion-auto-complete>
+
+        <ng-template #customized2 let-attrs="attrs">
+          <span [innerHTML]="attrs.data.category_name|boldprefix:attrs.keyword"></span>
+        </ng-template>
+      </div>
+    </ion-list>
+  </form>
+  <div padding align="center">
+    <button ion-button round disabled={{DisableOKButton}} color="RoyalPurple" large (click)="OKButton()"><ion-icon name="md-checkmark"></ion-icon></button>
+  </div>
+
+</ion-content>

@@ -1,0 +1,64 @@
+<ion-header dir="rtl">
+  <ion-navbar color="RoyalPurple">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+        </ion-col>
+        <ion-col>
+          <ion-title>
+            <span style="font-size:25px; font-weight:bold;">תעודת משלוח</span>
+          </ion-title>
+        </ion-col>
+        <ion-col>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-title>
+            <span>{{client.customer_name}}</span>
+          </ion-title>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-navbar>
+</ion-header>
+
+<ion-content dir="rtl">
+  <ion-auto-complete #AutoInput padding [template]="customized" [dataProvider]="Products" (itemSelected)="onSelectedProduct($event)"
+    [options]="{ placeholder : 'הזן פרטיי מוצר' }"></ion-auto-complete>
+
+  <ng-template #customized let-attrs="attrs">
+    <span [innerHTML]="attrs.data.product_name|boldprefix:attrs.keyword"></span>
+  </ng-template>
+
+  <ion-list *ngIf="productsArr.length>0">
+    <ion-item-sliding *ngFor="let product of productsArr;let i=index" #item>
+      <ion-item text-wrap>
+        <p style="color:#6A5acd; font-size:20px"> {{product.product_info.product_name}}</p>
+        <p style="color:#696969; font-size:15px"> מק"ט: {{product.product_info.product_barcode}}</p>
+        <br>
+        <div>
+          <p style="color:#6A5acd; font-size:17px">מחיר ליחידה: <span style="color:black">{{product.product_info.product_price}}</span></p>
+          <p style="color:#6A5acd; font-size:17px">כמות: <span style="color:black">{{product.amount}}</span></p>
+          <p style="color:#6A5acd; font-size:17px">סך הכל: <span style="color:black">{{product.product_info.product_price*product.amount}}</span></p>
+        </div>
+      </ion-item>
+      <ion-item-options side="left">
+        <button ion-button color="danger" large (click)="Remove_Product(i,item)"><ion-icon name="md-trash"></ion-icon>מחק</button>
+      </ion-item-options>
+
+      <ion-item-options side="right">
+        <button ion-button color="light" large (click)="Edit_Product(i,item)"><ion-icon name="md-create"></ion-icon>ערוך</button>
+      </ion-item-options>
+    </ion-item-sliding>
+
+    <ion-item style="padding-bottom:15px;padding-right:4px">
+        <ion-label color="RoyalPurple" style="font-size:20px"floating>הערות:</ion-label>
+        <ion-input #note ></ion-input>
+</ion-item>
+    <div padding align="center">
+      <button disabled={{disableButton}} ion-button color="RoyalPurple" padding large (click)="insert_delivery()">סיים</button>
+    </div>
+
+  </ion-list>
+</ion-content>

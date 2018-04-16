@@ -1,0 +1,52 @@
+<ion-header dir="ltr">
+  <ion-navbar color="RoyalPurple">
+    <ion-buttons start>
+      <button ion-button icon-only (click)="GoBack()">
+        <ion-icon large name="md-arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title align="center">
+      <span style="font-size:15px; font-weight:bold;">הוספת לקוח</span>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="InputControl">
+    <ion-list dir="rtl">
+      <ion-item>
+        <ion-label color="RoyalPurple" floating>שם לקוח:</ion-label>
+        <ion-input #name (ionChange)="CheckOKbutton()" formControlName="FullName"></ion-input>
+      </ion-item>
+      <p *ngIf="InputControl.controls.FullName.dirty && !InputControl.controls.FullName.valid">עליך למלא שם לקוח</p>
+      <ion-item>
+        <ion-label color="RoyalPurple" floating>ח.פ/ת.ז:</ion-label>
+        <ion-input #id (ionChange)="CheckOKbutton()" formControlName="ID"></ion-input>
+      </ion-item>
+      <p *ngIf="InputControl.controls.ID.dirty && !InputControl.controls.ID.valid">עליך למלא ח.פ</p>
+      <ion-item>
+        <ion-label color="RoyalPurple" floating>מייל:</ion-label>
+        <ion-input #email type="email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label color="RoyalPurple" floating>כתובת:</ion-label>
+        <ion-input #address></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label color="RoyalPurple" floating>עיר:</ion-label>
+        <ion-input #city></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label color="RoyalPurple" floating>מספר פלאפון:</ion-label>
+        <ion-input #cell type="tel"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label color="RoyalPurple" floating>מספר טלפון:</ion-label>
+        <ion-input #phone type="tel"></ion-input>
+      </ion-item>
+    </ion-list>
+  </form>
+  <div padding align="center">
+    <button ion-button round disabled={{DisableOKButton}} color="RoyalPurple" large (click)="OKButton()"><ion-icon name="md-checkmark"></ion-icon></button>
+  </div>
+</ion-content>
