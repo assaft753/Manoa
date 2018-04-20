@@ -20,9 +20,11 @@ export class DeliveryPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public Products: ProductsProvider, public delivery: DeliveryProvider, public toastCtrl: ToastController, public alertCtrl: AlertController, public modalCtrl: ModalController) {
     this.client = this.navParams.data;
+    console.log(this.client)
     this.productsArr = [];
+    this.Products.customerId = this.client.customer_code
+    console.log(this.Products.customerId)
   }
-
   onSelectedProduct(event) {
     var duplicate = false;
     for (var i = 0; i < this.productsArr.length && duplicate == false; i++) {
@@ -30,9 +32,36 @@ export class DeliveryPage {
         duplicate = true;
       }
     }
+
     if (duplicate == false) {
-      event.product_price = event.product_price.toFixed(2)
-      this.productsArr.push({ product_info: event, amount: 1 });
+      if (event.product_last_price != 0) {
+        let alert = this.alertCtrl.create({
+          title: 'מחיר לקוח',
+          message: 'האם לעדכן למחיר אחרון?',
+          buttons: [
+            {
+              text: 'בטל',
+              role: 'cancel',
+              handler: () => {
+                event.product_price = event.product_price.toFixed(2);
+                this.productsArr.push({ product_info: event, amount: 1 });
+              }
+            },
+            {
+              text: 'אשר',
+              handler: () => {
+                event.product_price = event.product_last_price.toFixed(2);
+                this.productsArr.push({ product_info: event, amount: 1 });
+              }
+            }
+          ]
+        });
+        alert.present();
+      }
+      else {
+        event.product_price = event.product_price.toFixed(2);
+        this.productsArr.push({ product_info: event, amount: 1 });
+      }
     }
     this.AutoInput.clearValue();
   }
@@ -46,7 +75,7 @@ export class DeliveryPage {
   }
 
   insert_delivery() {
-    this.delivery.insert_product(this.client.customer_code,this.note.value).toPromise().then(deliveryid => {
+    this.delivery.insert_product(this.client.customer_code, this.note.value).toPromise().then(deliveryid => {
       this.delivery.insert_product_details(this.productsArr, deliveryid).subscribe(res => {
         this.disableButton = true;
         this.presentOKToast();
