@@ -18,26 +18,28 @@
 
       <ion-item>
         <ion-label color="RoyalPurple" floating>כמות:</ion-label>
-        <ion-input (ionChange)="CheckOKbutton()" formControlName="quantity1" type="number"></ion-input>
+        <ion-input #product_quantity (ionChange)="CheckOKbutton()" formControlName="product_quantity_check" type="number"></ion-input>
       </ion-item>
 
-      <div *ngIf="InputControl.controls.quantity1.dirty && !InputControl.controls.quantity1.valid">
-        <p *ngIf="InputControl.controls.quantity1.errors.required">עליך לבחור כמות</p>
+      <div *ngIf="InputControl.controls.product_quantity_check.dirty && !InputControl.controls.product_quantity_check.valid">
+        <p *ngIf="InputControl.controls.product_quantity_check.errors.required">עליך לבחור כמות</p>
       </div>
 
       <ion-item>
         <ion-label color="RoyalPurple" floating>מחיר ליחידה:</ion-label>
-        <ion-input #MyInput2 (ionChange)="CheckOKbutton()" formControlName="quantity2" type="number"></ion-input>
+        <ion-input #product_price (ionChange)="CheckOKbutton()" formControlName="product_price_check" type="number"></ion-input>
       </ion-item>
 
-      <div *ngIf="InputControl.controls.quantity2.dirty && !InputControl.controls.quantity2.valid">
-        <p *ngIf="InputControl.controls.quantity2.errors.min">עליך לרשום מחיר מתאים</p>
-        <p *ngIf="InputControl.controls.quantity2.errors.required">עליך לרשום מחיר</p>
+      <div *ngIf="InputControl.controls.product_price_check.dirty && !InputControl.controls.product_price_check.valid">
+        <p *ngIf="InputControl.controls.product_price_check.errors.min">עליך לרשום מחיר מתאים</p>
+        <p *ngIf="InputControl.controls.product_price_check.errors.required">עליך לרשום מחיר</p>
 
       </div>
     </ion-list>
   </form>
   <div padding align="center">
-    <button ion-button round disabled={{DisableOKButton}} color="RoyalPurple" large (click)="OKButton()"><ion-icon name="md-checkmark"></ion-icon></button>
+    <button ion-button round disabled={{DisableOKButton}} color="RoyalPurple" large (click)="OKButton()">
+      <ion-icon name="md-checkmark"></ion-icon>
+    </button>
   </div>
 </ion-content>

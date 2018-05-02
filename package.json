@@ -1,7 +1,7 @@
 {
   "name": "Manoa",
-  "version": "0.0.1",
-  "author": "Ionic Framework",
+  "version": "6.2",
+  "author": "Assaf Tayouri",
   "homepage": "http://ionicframework.com/",
   "private": true,
   "scripts": {
@@ -46,7 +46,7 @@
     "@ionic/app-scripts": "2.1.4",
     "typescript": "2.3.4"
   },
-  "description": "An Ionic project",
+  "description": "Manoa App",
   "cordova": {
     "plugins": {
       "cordova-plugin-device": {},

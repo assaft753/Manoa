@@ -5,7 +5,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class DeliveryProvider {
 
-  temp: string;
+  customer_json: string;
   constructor(public http: Http) {
   }
 
@@ -17,8 +17,8 @@ export class DeliveryProvider {
       });
   }
   insert_product_details(products, deliveryId) {
-    this.temp = JSON.stringify(products);
-    return this.http.get("http://31.154.2.206:90/api/delivery/insert_delivery_details/?products=" + this.temp + "&deliveryid=" + deliveryId)
+    this.customer_json = JSON.stringify(products);
+    return this.http.get("http://31.154.2.206:90/api/delivery/insert_delivery_details/?products=" + this.customer_json + "&deliveryid=" + deliveryId)
       .map(
       result => {
         return result.json();

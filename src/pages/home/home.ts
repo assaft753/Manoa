@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { NavController, ModalController, AlertController } from 'ionic-angular';
 import { ClientsProvider } from '../../providers/clients/clients';
 import { AutoCompleteComponent } from 'ionic2-auto-complete';

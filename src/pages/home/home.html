@@ -3,17 +3,19 @@
     <ion-toolbar no-border-top>
       <ion-buttons left>
         <button ion-button icon-only>
-        <ion-icon name="md-cog"></ion-icon>
-      </button>
+          <ion-icon name="md-cog"></ion-icon>
+        </button>
       </ion-buttons>
-      <ion-title align="center"><span style="font-size:25px;font-weight: bold;">מנוע</span></ion-title>
+      <ion-title align="center">
+        <span style="font-size:25px;font-weight: bold;">מנוע</span>
+      </ion-title>
       <ion-buttons right>
         <button ion-button icon-only (click)="OpenModalProduct()">
-        <ion-icon name="md-pricetag"></ion-icon>
-      </button>
+          <ion-icon name="md-pricetag"></ion-icon>
+        </button>
         <button ion-button icon-only (click)="OpenModalCustomer()">
-        <ion-icon name="md-person-add"></ion-icon>
-      </button>
+          <ion-icon name="md-person-add"></ion-icon>
+        </button>
       </ion-buttons>
     </ion-toolbar>
   </ion-navbar>
@@ -33,19 +35,33 @@
         <span style="color:#6A5acd; font-size:20px"> {{client.customer_name}}</span>
       </ion-card-header>
       <ion-card-content>
-        <p *ngIf="client.customer_idNumber!=null && client.customer_idNumber!='' && client.customer_idNumber!=' '"><span style="color:#6A5acd;font-size:15px;font-weight: bold;"> ח.פ/ת.ז: </span>{{client.customer_idNumber}}</p>
-        <p *ngIf="client.customer_email!=null && client.customer_email!='' && client.customer_email!=' '"><span style="color:#6A5acd;font-size:15px;font-weight: bold;"> מייל: </span>{{client.customer_email}}</p>
-        <p *ngIf="client.customer_phone!=null && client.customer_phone!='' && client.customer_phone!=' '"><span style="color:#6A5acd;font-size:15px;font-weight: bold;"> מספר טלפון: </span>{{client.customer_phone}}</p>
-        <p *ngIf="client.customer_cellular!=null && client.customer_cellular!=' ' && client.customer_cellular!=''"><span style="color:#6A5acd;font-size:15px;font-weight: bold;"> מספר סלולר: </span>{{client.customer_cellular}}</p>
-        <p *ngIf="client.customer_address!=null && client.customer_address!=' ' && client.customer_address!=''"><span style="color:#6A5acd;font-size:15px;font-weight: bold;"> כתובת: </span>{{client.customer_address}}</p>
-        <p *ngIf="client.customer_city!=null && client.customer_city!=' ' && client.customer_city!=''"><span style="color:#6A5acd;font-size:15px;font-weight: bold;"> יישוב: </span>{{client.customer_city}}</p>
+        <p *ngIf="client.customer_idNumber!=null && client.customer_idNumber!='' && client.customer_idNumber!=' '">
+          <span style="color:#6A5acd;font-size:15px;font-weight: bold;"> ח.פ/ת.ז: </span>{{client.customer_idNumber}}</p>
+        <p *ngIf="client.customer_email!=null && client.customer_email!='' && client.customer_email!=' '">
+          <span style="color:#6A5acd;font-size:15px;font-weight: bold;"> מייל: </span>{{client.customer_email}}</p>
+        <p *ngIf="client.customer_phone!=null && client.customer_phone!='' && client.customer_phone!=' '">
+          <span style="color:#6A5acd;font-size:15px;font-weight: bold;"> מספר טלפון: </span>{{client.customer_phone}}</p>
+        <p *ngIf="client.customer_cellular!=null && client.customer_cellular!=' ' && client.customer_cellular!=''">
+          <span style="color:#6A5acd;font-size:15px;font-weight: bold;"> מספר סלולר: </span>{{client.customer_cellular}}</p>
+        <p *ngIf="client.customer_address!=null && client.customer_address!=' ' && client.customer_address!=''">
+          <span style="color:#6A5acd;font-size:15px;font-weight: bold;"> כתובת: </span>{{client.customer_address}}</p>
+        <p *ngIf="client.customer_city!=null && client.customer_city!=' ' && client.customer_city!=''">
+          <span style="color:#6A5acd;font-size:15px;font-weight: bold;"> יישוב: </span>{{client.customer_city}}</p>
       </ion-card-content>
     </ion-card>
     <div padding align="center">
-      <button ion-button full round color="RoyalPurple" padding large (click)="ShowDeliveryDetailsPage()"> <span padding style="font-size:20px"> הצגת תעודות משלוח</span></button>
-      <button ion-button full round color="RoyalPurple" padding large (click)="ShowDeliveryPage()"> <span padding style="font-size:20px"> יצירת תעודת משלוח</span></button>
-      <button ion-button full round color="RoyalPurple" padding large (click)="ShowDebtsPage()"> <span padding style="font-size:20px"> כרטיס בהנה"ח</span></button>
-      <button ion-button full round color="RoyalPurple" padding large> <span padding style="font-size:20px"> חשבונית מס </span></button>
+      <button ion-button full round color="RoyalPurple" padding large (click)="ShowDeliveryDetailsPage()">
+        <span padding style="font-size:20px"> הצגת תעודות משלוח</span>
+      </button>
+      <button ion-button full round color="RoyalPurple" padding large (click)="ShowDeliveryPage()">
+        <span padding style="font-size:20px"> יצירת תעודת משלוח</span>
+      </button>
+      <button ion-button full round color="RoyalPurple" padding large (click)="ShowDebtsPage()">
+        <span padding style="font-size:20px"> כרטיס בהנה"ח</span>
+      </button>
+      <button ion-button full round color="RoyalPurple" padding large>
+        <span padding style="font-size:20px"> חשבונית מס </span>
+      </button>
     </div>
   </div>
 </ion-content>

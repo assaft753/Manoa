@@ -6,7 +6,7 @@ import { AutoCompleteService } from 'ionic2-auto-complete';
 
 @Injectable()
 export class ProductsProvider implements AutoCompleteService {
-  temp: any;
+  customer_json: any;
   customerId: Number;
   constructor(public http: Http) {
   }
@@ -21,8 +21,8 @@ export class ProductsProvider implements AutoCompleteService {
   }
 
   insert_product(product) {
-    this.temp = JSON.stringify(product);
-    return this.http.get("http://31.154.2.206:90/api/product/insert_product/?product=" + this.temp)
+    this.customer_json = JSON.stringify(product);
+    return this.http.get("http://31.154.2.206:90/api/product/insert_product/?product=" + this.customer_json)
       .map(
       result => {
         return result.json();
