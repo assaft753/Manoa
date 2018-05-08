@@ -8,16 +8,26 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'debts.html',
 })
 export class DebtsPage {
-
-  client: any;
-  debts: any;
-  hova: number;
-  zikui: number;
+  year: number;
+  years: Number[];
+  client: any = null;
+  debts: any = null;
+  hova: number = 0;
+  zikui: number = 0;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.client = this.navParams.data.client;
-    this.debts = this.navParams.data.debts.debts_arr;
-    this.hova = this.navParams.data.debts.hova;
-    this.zikui = this.navParams.data.debts.zikui;
+    this.years=new Array<Number>();
+    this.year=new Date().getFullYear();
+    for(var i=2016;i<=this.year;i++)
+    {
+      this.years.push(i);
+    }
+    let data = this.navParams.data;
+    this.client = data.client;
+    if (data.debts != null) {
+      this.debts = data.debts.debts_arr;
+      this.hova = data.debts.hova;
+      this.zikui = data.debts.zikui;
+    }
   }
 
 }

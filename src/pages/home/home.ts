@@ -56,12 +56,16 @@ export class HomePage {
   }
 
   ShowDebtsPage() {
-    this.Debts.get_debts(this.client.customer_code, 2017).subscribe(debts => {
+    this.Debts.get_debts(this.client.customer_code, new Date().getFullYear()).subscribe(debts => 
+      {
       this.navCtrl.push(DebtsPage, { debts: debts, client: this.client });
-    }, err => {
-      if (err.json().message === "THERE_ARE_NO_DEBTS_MSG") {
-        this.presentAlert('בהנה"ח', 'אין חובות ללקוח');
-      }
+    }, 
+    err => 
+    {
+      /*if (err.json().message === "THERE_ARE_NO_DEBTS_MSG") {
+        this.presentAlert('בהנה"ח', 'אין חובות ללקוח');*/
+        this.navCtrl.push(DebtsPage, {client:this.client});
+      //}
     })
   }
 

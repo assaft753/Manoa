@@ -25,37 +25,39 @@
 
 
 <ion-content padding dir="rtl">
-  <ion-card>
-    <ion-card-header>
-      <span style="color:#6A5acd; font-size:30px"> סך הכל נכון ל2017</span>
-    </ion-card-header>
-    <ion-card-content>
-      <p>
-        <span style="color:#6A5acd;font-size:15px;font-weight: bold;"> חובה: </span>
-        <span dir="ltr">{{hova}}</span> ש"ח</p>
-      <p>
-        <span style="color:#6A5acd;font-size:15px;font-weight: bold;"> זכות: </span>
-        <span dir="ltr">{{zikui}}</span> ש"ח</p>
-      <p>
-        <span style="color:#6A5acd;font-size:15px;font-weight: bold;"> יתרה: </span>
-        <span dir="ltr">{{zikui-hova}}</span> ש"ח</p>
-    </ion-card-content>
-  </ion-card>
-  <div *ngIf="debts!=null">
-    <ion-card *ngFor="let debt of debts">
+  <button ion-button round dir="center" color="RoyalPurple" padding>2018</button>
+  <div>
+    <ion-card>
       <ion-card-header>
-        <span style="color:#6A5acd; font-size:20px"> {{debt.kind}}</span>
+        <span style="color:#6A5acd; font-size:30px"> סך הכל נכון ל{{year}}</span>
       </ion-card-header>
       <ion-card-content>
         <p>
-          <span style="color:#6A5acd;font-size:15px;font-weight: bold;"> {{debt.type}}: </span>
-          <span dir="ltr">{{debt.total}}</span> ש"ח</p>
+          <span style="color:#6A5acd;font-size:15px;font-weight: bold;"> חובה: </span>
+          <span dir="ltr">{{hova}}</span> ש"ח</p>
         <p>
-          <span style="color:#6A5acd;font-size:15px;font-weight: bold;"> תאריך הנפקה: </span>{{debt.startdate}}</p>
+          <span style="color:#6A5acd;font-size:15px;font-weight: bold;"> זכות: </span>
+          <span dir="ltr">{{zikui}}</span> ש"ח</p>
         <p>
-          <span style="color:#6A5acd;font-size:15px;font-weight: bold;"> תאריך סיום: </span>{{debt.paydate}}</p>
+          <span style="color:#6A5acd;font-size:15px;font-weight: bold;"> יתרה: </span>
+          <span dir="ltr">{{zikui-hova}}</span> ש"ח</p>
       </ion-card-content>
     </ion-card>
+    <div *ngIf="debts!=null">
+      <ion-card *ngFor="let debt of debts">
+        <ion-card-header>
+          <span style="color:#6A5acd; font-size:20px"> {{debt.kind}}</span>
+        </ion-card-header>
+        <ion-card-content>
+          <p>
+            <span style="color:#6A5acd;font-size:15px;font-weight: bold;"> {{debt.type}}: </span>
+            <span dir="ltr">{{debt.total}}</span> ש"ח</p>
+          <p>
+            <span style="color:#6A5acd;font-size:15px;font-weight: bold;"> תאריך הנפקה: </span>{{debt.startdate}}</p>
+          <p>
+            <span style="color:#6A5acd;font-size:15px;font-weight: bold;"> תאריך סיום: </span>{{debt.paydate}}</p>
+        </ion-card-content>
+      </ion-card>
+    </div>
   </div>
-
 </ion-content>
