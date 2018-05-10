@@ -46,7 +46,7 @@
     <div *ngIf="debts!=null">
       <ion-card *ngFor="let debt of debts">
         <ion-card-header>
-          <span style="color:#6A5acd; font-size:20px"> {{debt.kind}}</span>
+          <span style="color:#6A5acd; font-size:20px">{{debt.kind}} {{debt.id}}</span>
         </ion-card-header>
         <ion-card-content>
           <p>

@@ -31,8 +31,12 @@ export class DebtsPage implements AfterViewInit {
     this.debtsProvider.get_debts(this.client.customer_code).subscribe(
       data => {
         this.UpdateDebtsUI(data);
+        console.log(data);
         this.debtsProvider.get_debts_details(this.client.customer_code, this.year).subscribe(
-          data => this.UpdateDebtsDetailsUI(data),
+          data => {
+            this.UpdateDebtsDetailsUI(data);
+            console.log(data);
+          },
           err => this.UpdateDebtsDetailsUI(null)
         );
 
@@ -57,7 +61,7 @@ export class DebtsPage implements AfterViewInit {
   }
   UpdateDebtsUI(data) {
     if (data != null) {
-      this.debts = data.debts_arr;
+      this.zikui=data.zikui;
       this.hova = data.hova;
     }
     else {
