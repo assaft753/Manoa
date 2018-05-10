@@ -8,8 +8,13 @@ export class DebtsProvider {
   constructor(public http: Http) {
   }
 
-  get_debts(customerid, year) {
-    return this.http.get("http://31.154.2.206:90/api/debts/by_costumer/costumer/" + customerid + "/year/" + year).map(res => {
+  get_debts(customerid) {
+    return this.http.get("http://31.154.2.206:90/api/debts/by_costumer_debts/costumer/" + customerid).map(res => {
+      return res.json();
+    });
+  }
+  get_debts_details(customerid, year) {
+    return this.http.get("http://31.154.2.206:90/api/debts/by_costumer_debts_details/costumer/" + customerid + "/year/" + year).map(res => {
       return res.json();
     });
   }

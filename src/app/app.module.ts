@@ -20,6 +20,7 @@ import { DeliveryProvider } from '../providers/delivery/delivery';
 import { SupplierProvider } from '../providers/supplier/supplier';
 import { CategoryProvider } from '../providers/category/category';
 import { DebtsProvider } from '../providers/debts/debts';
+import { WheelSelector } from '@ionic-native/wheel-selector';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { DebtsProvider } from '../providers/debts/debts';
     DeliveryProvider,
     SupplierProvider,
     CategoryProvider,
-    DebtsProvider
+    DebtsProvider,
+    WheelSelector
   ]
 })
 export class AppModule { }

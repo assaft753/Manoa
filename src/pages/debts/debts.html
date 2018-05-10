@@ -25,11 +25,11 @@
 
 
 <ion-content padding dir="rtl">
-  <button ion-button round dir="center" color="RoyalPurple" padding>2018</button>
+  <button ion-button round dir="center" color="RoyalPurple" (click)="ChooseYear()" padding>{{year}}</button>
   <div>
     <ion-card>
       <ion-card-header>
-        <span style="color:#6A5acd; font-size:30px"> סך הכל נכון ל{{year}}</span>
+        <span style="color:#6A5acd; font-size:30px"> סך הכל</span>
       </ion-card-header>
       <ion-card-content>
         <p>
